@@ -47,6 +47,7 @@ public class NoteBehavior : MonoBehaviour
 		else if(other.gameObject.tag == "Miss Line")
 		{
 			judge = GameManager.judges.MISS;
+			Destroy(gameObject);
 		}
 	}
 }
