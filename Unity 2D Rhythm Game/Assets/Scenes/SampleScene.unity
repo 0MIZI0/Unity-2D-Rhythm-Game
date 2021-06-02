@@ -1947,6 +1947,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1349098410}
   - component: {fileID: 1349098411}
+  - component: {fileID: 1349098412}
   m_Layer: 0
   m_Name: Note Controller
   m_TagString: Untagged
@@ -1985,6 +1986,24 @@ MonoBehaviour:
   - {fileID: 5755627791824562407, guid: c026a1436eee0b3479ff6e5ff112d85f, type: 3}
   - {fileID: 8652073419092545843, guid: c9b220bb37204f44f81b27fb32ef79e1, type: 3}
   - {fileID: 3776697432863650950, guid: 0963a7d489643544bab6059a611d137f, type: 3}
+--- !u!114 &1349098412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349098409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0101b28b5e982d447822d846ed1495a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Notes:
+  - {fileID: 1378677441600054179, guid: 2d6dc8487fdf4214495b13ffc341e6aa, type: 3}
+  - {fileID: 5755627791824562407, guid: c026a1436eee0b3479ff6e5ff112d85f, type: 3}
+  - {fileID: 8652073419092545843, guid: c9b220bb37204f44f81b27fb32ef79e1, type: 3}
+  - {fileID: 3776697432863650950, guid: 0963a7d489643544bab6059a611d137f, type: 3}
+  noteCount: 12
 --- !u!1 &1537738994
 GameObject:
   m_ObjectHideFlags: 0

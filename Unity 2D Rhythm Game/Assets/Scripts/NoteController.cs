@@ -18,8 +18,22 @@ public class NoteController : MonoBehaviour
 	}
 	
 	public GameObject[] Notes;
+	
+	private ObjectPooler noteObjectPooler;
 	private List<Note> notes = new List<Note>();
+	private float x, z, startY = 8.0f;
 	private float beatInterval = 1.0f;
+	
+	void MakeNote(Note note)
+	{
+		GameObject obj = noteObjectPooler.getObject(note.noteType);
+		//시작위치 결정
+		x = obj.transform.position.x;
+		z = obj.transform.position.z;
+		obj.transform.position = new Vector3(x, startY, z);
+		obj.GetComponent<NoteBehavior>().Initialize();
+		obj.SetActive(true);
+	}
 	
 	//코루틴 함수 ~ 유니티 엔진에게 명령을 내려용
 	IEnumerator AwaitMakeNote(Note note)
@@ -27,13 +41,13 @@ public class NoteController : MonoBehaviour
 		int noteType = note.noteType;
 		int order = note.order;
 		yield return new WaitForSeconds(order * beatInterval);
-		Instantiate(Notes[noteType-1]); //1~4 -> 0~3
+		MakeNote(note); //1~4 -> 0~3
 	}
 	
     // Start is called before the first frame update
     void Start()
     {
-		//노트 생성 ~ 
+		noteObjectPooler = gameObject.GetComponent<ObjectPooler>();
         notes.Add(new Note(1,1));
 		notes.Add(new Note(2,2));
 		notes.Add(new Note(3,3));
@@ -48,6 +62,7 @@ public class NoteController : MonoBehaviour
 		{
 			StartCoroutine(AwaitMakeNote(notes[i]));
 		}
+		
 		
     }
 
