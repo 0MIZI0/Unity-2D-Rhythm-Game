@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System;
+using UnityEngine.SceneManagement;
+
 
 public class NoteController : MonoBehaviour
 {
@@ -10,8 +12,8 @@ public class NoteController : MonoBehaviour
 	class Note
 	{
 		public int noteType { get; set;}
-		public int order { get; set;}
-		public Note(int noteType, int order)
+		public float order { get; set;}
+		public Note(int noteType, float order)
 		{
 			this.noteType = noteType;
 			this.order = order;
@@ -50,8 +52,8 @@ public class NoteController : MonoBehaviour
 	IEnumerator AwaitMakeNote(Note note)
 	{
 		int noteType = note.noteType;
-		int order = note.order;
-		yield return new WaitForSeconds(startingPoint + order * beatInterval);
+		float order = note.order;
+		yield return new WaitForSeconds(startingPoint + order);
 		MakeNote(note); //1~4 -> 0~3
 	}
 	
@@ -79,7 +81,8 @@ public class NoteController : MonoBehaviour
 		{
 			Note note = new Note(
 				Convert.ToInt32(line.Split(' ')[0]) + 1,
-				Convert.ToInt32(line.Split(' ')[1])
+				(float)((Convert.ToDouble(line.Split(' ')[1])))
+				//(int)((Convert.ToDouble(line.Split(' ')[1])*bpm/divider))
 			);
 			notes.Add(note);
 		}
@@ -88,9 +91,24 @@ public class NoteController : MonoBehaviour
 		{
 			StartCoroutine(AwaitMakeNote(notes[i]));
 		}
-		
-		
+		//게임끝
+		StartCoroutine(AwaitGameResult(notes[notes.Count-1].order));
     }
+	
+	IEnumerator AwaitGameResult(float order)
+	{
+		yield return new WaitForSeconds(startingPoint + order + 3.0f);
+		GameResult();
+	}
+	
+	void GameResult()
+	{
+		PlayerInformation.maxCombo = GameManager.instance.maxCombo;
+		PlayerInformation.score = GameManager.instance.score;
+		PlayerInformation.musicTitle = musicTitle;
+		PlayerInformation.musicArtist = musicArtist;
+		SceneManager.LoadScene("GameResultScene");
+	}
 
     // Update is called once per frame
     void Update()

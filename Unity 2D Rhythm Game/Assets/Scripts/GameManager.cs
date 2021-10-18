@@ -17,13 +17,14 @@ public class GameManager : MonoBehaviour
 	public float noteSpeed;
 	
 	public GameObject scoreUI;
-	private float score;
+	public float score;
 	private Text scoreText;
 	
 	public GameObject comboUI;
 	private int combo;
 	private Text comboText;
 	private Animator comboAnimator;
+	public int maxCombo;
 	
 	
 	public enum judges { NONE = 0, BAD, GREAT, PERFECT, MISS };
@@ -42,6 +43,8 @@ public class GameManager : MonoBehaviour
 	
 	private AudioSource audioSource;
 	public string music = "1";
+	
+	public bool autoPerfect;
 	
 	void MusicStart()
 	{
@@ -100,10 +103,14 @@ public class GameManager : MonoBehaviour
 		scoreText.text = score.ToString(scoreFormat);
 		
 		judgementSpriteAnimator.SetTrigger("Show");
-		if( (combo % 10 == 0) && combo >= 50 )
+		if(combo >= 3)
 		{
 			comboText.text = "COMBO" + combo.ToString();
 			comboAnimator.SetTrigger("Show");
+		}
+		if(maxCombo < combo)
+		{
+			maxCombo = combo;
 		}
 	}
 	
