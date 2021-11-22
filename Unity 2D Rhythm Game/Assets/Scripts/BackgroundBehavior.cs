@@ -1,33 +1,28 @@
-癤퓎sing System.Collections;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BackgroundBehavior : MonoBehaviour
 {
-    // Start is called before the first frame update
-	public GameObject gameBackground;
-	private SpriteRenderer gameBackgroundSpriteRenderer;
-	
-    void Start()
+    public GameObject gameBackground;
+    private SpriteRenderer gameBackgroundSpriteRenderer;
+
+    private void Start()
     {
         gameBackgroundSpriteRenderer = gameBackground.GetComponent<SpriteRenderer>();
-		StartCoroutine(FadeOut(gameBackgroundSpriteRenderer, 0.005f));
+        StartCoroutine(FadeOut(gameBackgroundSpriteRenderer, 0.005f));
     }
 
-	IEnumerator FadeOut(SpriteRenderer spriteRenderer, float amount)
-	{
-		Color color = spriteRenderer.color;
-		while(color.a > 0.0f)
-		{
-			color.a -= amount;
-			spriteRenderer.color = color;
-			yield return new WaitForSeconds(amount);
-		}
-	}
-	
-    // Update is called once per frame
-    void Update()
+    // 점점 투명해지는 효과 함수
+    private IEnumerator FadeOut(SpriteRenderer spriteRenderer, float amount)
     {
-        
+        Color color = spriteRenderer.color;     // 투명도 가져오기
+        while (color.a > 0.0f)                  // 아직 완전 투명이 아니라면
+        {
+            color.a -= amount;                  // 투명도 낮추기
+            spriteRenderer.color = color;       // 투명도 적용하기
+            yield return new WaitForSeconds(amount);
+        }
     }
 }

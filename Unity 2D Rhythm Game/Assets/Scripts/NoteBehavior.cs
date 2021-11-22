@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,6 +29,7 @@ public class NoteBehavior : MonoBehaviour
         transform.Translate(Vector3.down * GameManager.instance.noteSpeed);
 		if(Input.GetKey(keyCode))
 		{
+
 			GameManager.instance.processJudge(judge, noteType);
 			if (judge != GameManager.judges.NONE) gameObject.SetActive(false);
 		}
@@ -47,7 +48,7 @@ public class NoteBehavior : MonoBehaviour
 		else if(other.gameObject.tag == "Perfect Line")
 		{
 			judge = GameManager.judges.PERFECT;
-			if(GameManager.instance.autoPerfect)
+			if(GameManager.autoPerfect)
 			{
 				GameManager.instance.processJudge(judge, noteType);
 				gameObject.SetActive(false);

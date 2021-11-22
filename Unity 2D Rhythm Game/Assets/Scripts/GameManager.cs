@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -42,13 +42,12 @@ public class GameManager : MonoBehaviour
 	private SpriteRenderer[] trailSpriteRenderers;
 	
 	private AudioSource audioSource;
-	public string music = "1";
 	
-	public bool autoPerfect;
+	public static bool autoPerfect;
 	
 	void MusicStart()
 	{
-		AudioClip audioClip = Resources.Load<AudioClip>("Beats/"+music);
+		AudioClip audioClip = Resources.Load<AudioClip>("Beats/"+PlayerInformation.selectedMusic);
 		audioSource = GetComponent<AudioSource>();
 		audioSource.clip = audioClip;
 		audioSource.Play();
@@ -56,7 +55,7 @@ public class GameManager : MonoBehaviour
 	
     void Start()
     {
-		Invoke("MusicStart", 2);
+		Invoke("MusicStart", 3);
 		judgementSpriteRenderer = judgeUI.GetComponent<Image>();
 		judgementSpriteAnimator = judgeUI.GetComponent<Animator>();
 		scoreText = scoreUI.GetComponent<Text>();

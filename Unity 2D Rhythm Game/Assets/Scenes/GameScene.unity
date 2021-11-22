@@ -767,7 +767,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 464357217}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfefea4e48ee04742b271790c8f925d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 55dc6e4692a890444b4842ab9b7fe62a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameBackground: {fileID: 2032674857}
@@ -6392,10 +6392,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 987386164}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e483f037ab75d74990c8e08f0123f54, type: 3}
+  m_Script: {fileID: 11500000, guid: 1537b10004d57af40b69dca7ce2c4568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noteSpeed: 0.04
+  noteSpeed: 0.08
   scoreUI: {fileID: 1049017972}
   score: 0
   comboUI: {fileID: 1681059098}
@@ -6406,7 +6406,6 @@ MonoBehaviour:
   - {fileID: 1145043267}
   - {fileID: 754771367}
   - {fileID: 1381266953}
-  music: 1
   autoPerfect: 1
 --- !u!4 &987386166
 Transform:
@@ -7428,7 +7427,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349098409}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2367611, y: 0.9966716, z: -4.530294}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7443,7 +7442,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1349098409}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9520b358dfe0fe44c8a1e00155483ff6, type: 3}
+  m_Script: {fileID: 11500000, guid: 046542fe31d47a14d80c9fc0614343b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Notes:
@@ -7460,7 +7459,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1349098409}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0101b28b5e982d447822d846ed1495a9, type: 3}
+  m_Script: {fileID: 11500000, guid: d80ca99dfec21b04aab012babbb52efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Notes:

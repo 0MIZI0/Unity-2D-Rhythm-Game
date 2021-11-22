@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,15 +25,16 @@ public class ObjectPooler : MonoBehaviour
 				poolsOfNOtes[i].Add(obj);
 			}
 		}
-				
     }
 	
 	public GameObject getObject(int noteType)
 	{
+		// print($"noteType : {noteType}");
 		foreach(GameObject obj in poolsOfNOtes[noteType - 1])
 		{
 			if(!obj.activeInHierarchy)
 			{
+				// print("노트 오브젝트 넘어간다");
 				return obj;	
 			}
 		}
@@ -43,6 +44,7 @@ public class ObjectPooler : MonoBehaviour
 			poolsOfNOtes[noteType -1].Add(obj);
 			return obj;
 		}
+		// print("실패해서 NULL 넘어간다");
 		return null;
 	}
 
